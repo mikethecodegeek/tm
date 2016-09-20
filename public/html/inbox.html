@@ -1,0 +1,90 @@
+<div class="container">
+  <div>
+    <button class='btn'>New Mail</button>
+    <button class='btn'>Read Mail</button>
+    <button class='btn'>Sent Mail</button>
+    <button ng-show="authenticated == false" id="newmessage" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#messageModal">
+    Send a Message
+  </button>
+  <button ng-show="authenticated == true" id="newusermessage" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#userMessageModal">
+  Send a Message
+</button>
+  </div>
+  <h1>Inbox</h1>
+  <table class="table">
+      <tr>
+          <th>Date</th>
+          <th>From</th>
+          <th>Subject</th>
+          <th>Message</th>
+      </tr>
+     <tr ng-repeat="message in messages">
+         <td>{{message.date | date}}</td>
+         <td>{{message.from}}</td>
+         <td>{{message.subject}}</td>
+         <td>{{message.message}}</td>
+         <td><button attr={{message._id}} ng-click="deleteMessage(message._id)">Delete</button></td>
+     </tr>
+
+  </table>
+
+  <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add New Item</h4>
+        </div>
+        <div class="modal-body">
+          <form ng-submit="addToList(item)">
+
+            <div class="form-section">
+            Subject <br>
+            <input type="text" ng-model="message.subject">
+            </div>
+            <div class="form-section">
+            Message <br>
+            <input type="text" ng-model="message.message">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" ng-click=sendToAdmin(message)>Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="userMessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Item</h4>
+      </div>
+      <div class="modal-body">
+        <form ng-submit="addToList(item)">
+          <div class="form-section">
+          To: <br>
+          <input type="text" ng-model="message.to">
+          </div>
+          <div class="form-section">
+          Subject <br>
+          <input type="text" ng-model="message.subject">
+          </div>
+          <div class="form-section">
+          Message <br>
+          <input type="text" ng-model="message.message">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click=sendToUser(message)>Send Message</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>New User</h2>
+  <div class="row topMargin">
+      <form ng-submit="register(this)">
+      <div class="col-xs-12 input-field">
+          <label for = 'name'>Name</label>
+          <input id = 'name' type="text" ng-model="newName" placeholder="first last" required="true">
+      </div>
+      <div class="col-xs-12 input-field">
+          <label for = 'email'>Email</label>
+          <input id = 'email' type="email" ng-model="newEmail" placeholder="email" required="true">
+      </div>
+    
+
+  <div class="row top">
+
+      <div class="col-xs-12 input-field">
+          <label for = 'pwd1'>Password</label>
+          <input id = 'pwd1' name="pwd1" type="password" ng-model="pwd1" placeholder="password" required="true">
+      </div>
+
+      <div class="col-xs-12 input-field">
+          <label for = 'pwd2'>Password</label>
+          <input id = 'pwd2' name="pwd2" type="password" ng-model="pwd2" placeholder="confirm password" required="true">
+      </div>
+
+  </div>
+  <div class="row">
+
+      <button class="btn btn-primary top" type="submit">Register</a>
+  </div>
+
+  </form>
+      </div>
+
+</div>

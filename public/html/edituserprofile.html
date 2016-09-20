@@ -1,0 +1,112 @@
+  <div class="row" style="margin-bottom:10%;">
+    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="text-align:center; font-size:1.25em; padding-bottom:10%;border: 1px solid #173e7c;">
+      <h2>Update Information for {{userToEdit.name}}:</h2>
+      <br>
+      <button class="btn btn-primary" ui-sref="profile">Back to Profile</button>
+      <br>
+      <br>
+      <form class="userToEditForm" ng-submit="updateUser()">
+        <p>Name: <input id="newname" type="text" value={{userToEdit.name}} required /></p>
+        <p>Email: <input id="newemail" type="email" value ={{userToEdit.email}} required /></p>
+        <p>Phone: <input id="newphone" type="tel" value={{userToEdit.phone}} required /></p>
+        <input class="btn btn-success topMargin" type="submit" value="Update My Info"/>
+      </form>
+      <br>
+      <hr class="style-one">
+      <h2>{{userToEdit.name}}'s Address List</h2>
+      <br>
+      <button class="btn btn-success" ng-click="newAddressModal()">Add new address</button>
+      <br>
+      <br>
+      <p>Current Mailing Address</p>
+      <p>Address: {{userToEdit.defaultaddress.address}}</p>
+      <p>City: {{userToEdit.defaultaddress.city}}</p>
+      <p>State: {{userToEdit.defaultaddress.state}}</p>
+      <p>Zip: {{userToEdit.defaultaddress.zip}}</p>
+      <br>
+      <button class="btn btn-warning" ng-click="editDefaultAddress()">Edit</button>
+      <br>
+      <hr class="style-one">
+      <div ng-repeat="address in userToEdit.addresses">
+          <p>Address: {{address.address}}</p>
+          <p>City: {{address.city}}</p>
+          <p>State: {{address.state}}</p>
+          <p>Zip: {{address.zip}}</p>
+          <button class="btn btn-warning" ng-click="editAddressList($index, address)">Edit</button>
+          <button class="btn btn-danger" ng-click="removeAddress(address)">Delete</button>
+          <button class="btn btn-success" ng-click="changeMailingAddress(address)">Make this my mailing address</button>
+      </div>
+
+
+      <div class="modal fade" id="editDefault" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+      <form class="currMailAdd" ng-submit="saveDefault()">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Update Current Mailing Address</h4>
+            </div>
+            <div class="modal-body">
+                <p>Address: <input id="defaultaddress" type="text" value="{{userToEdit.defaultaddress.address}}" required /></p>
+                <p>City: <input id="defaultcity" type="text" value="{{userToEdit.defaultaddress.city}}" required /></p>
+                <p>State: <input id="defaultstate" type="text" value="{{userToEdit.defaultaddress.state}}" required /></p>
+                <p>Zip: <input id="defaultzip" type="text" value="{{userToEdit.defaultaddress.zip}}" required /></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" >Save changes</button>
+            </div>
+        </div>
+      </form>
+
+          </div>
+      </div>
+      <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <form class="addNewMail" ng-submit="addNewAddress()">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Add New Mailing Address</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p>Address: <input id="addaddress" type="text" ng-model="newaddress.address" required /></p>
+                      <p>City: <input id="addcity" type="text" ng-model="newaddress.city" required /></p>
+                      <p>State: <input id="addstate" type="text" ng-model="newaddress.state" required /></p>
+                      <p>Zip: <input id="addzip" type="text" ng-model="newaddress.zip" required /></p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+              </div>
+            </form>
+
+          </div>
+      </div>
+      <div class="modal fade" id="editAddressList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <form class="addNewMail" ng-submit="updateAddressList()">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Current Mailing Address</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p>Address: <input id="editaddress" type="text" value="{{edit.address}}" required /></p>
+                      <p>City: <input id="editcity" type="text" value="{{edit.city}}" required /></p>
+                      <p>State: <input id="editstate" type="text" value="{{edit.state}}" required /></p>
+                      <p>Zip: <input id="editzip" type="text" value="{{edit.zip}}" required /></p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+              </div>
+            </form>
+
+          </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+  </div>

@@ -1,0 +1,90 @@
+<div class="container">
+
+
+  <div class="row adminNavbar">
+      <div class="col-sm-10">
+          <h1 class="bottom" id="manageDevices">Manage Settings</h1>
+      </div>
+      <div class="col-sm-2 top">
+          <a class="adminNavLinks" ui-sref="dashboard">Manage Orders</a></br>
+          <a class="adminNavLinks" ui-sref="devices">Manage Devices</a></br>
+          <a class="adminNavLinks" ui-sref="users">Manage Users</a></br>
+      </div>
+  </div>
+
+  <div class="row settingsRow">
+
+  <div class="row settings">
+      <form ng-submit="changeEmail()">
+      <div class="col-sm-8 col-sm-offset-2">
+          <h3 class="bottom center">Admin Panel</h3>
+          <p>Change Email: <input type="text" ng-model="email" required="required"> </p>
+          <button class="btn btn-success" type="submit">Submit</button>
+      </div>
+      </form>
+  </div>
+
+  <div class="row settings">
+      <form ng-submit="changePassword()">
+          <div class="col-sm-8 col-sm-offset-2">
+              <p>Change Password:  <input type="password" ng-model="newpassword" required="required"></p>
+              <p>Confirm Password: <input type="password" ng-model="confirmPassword" required="required"></p>
+              <p>**You will need this email and password for administration access.</p>
+              <button class="btn btn-success submitBtn" type="submit">Submit</button>
+          </div>
+      </form>
+
+  </div>
+  </div>
+
+  <div class="row settings settingsRow" ng-show={{role}}>
+      <h3 class="center">SuperAdmin Panel</h3>
+          <p class="center">**Super Admin access only.</p>
+          <div class="row">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-6">
+              <h3 class="bottom">Add a new Admin:</h3>
+              </div>
+          </div>
+      <form ng-submit = 'registerAdmin()'>
+          <div class="col-sm-3 col-sm-offset-2">
+              <p>Name: </br>  <input type="text" ng-model="newAdminName" required="required"></p>
+              <p>UserName: </br>   <input type="text" ng-model="newAdminUser" required="required"></p>
+              <p>Email: </br>  <input type="text" ng-model="newAdminEmail" required="required"></p>
+          </div>
+          <div class="col-sm-3 col-sm-offset-1">
+              <p>Password: </br>  <input type="password" ng-model="newAdminPassword" required="required"></p>
+              <p>Confirm Password: </br> <input type="password" ng-model="newAdminConfirmPassword" required="required"></p>
+              <p class="topMargin">**New Admin will need this email and password for administration access.</p>
+              <button class="btn btn-success submitBtn bottom" type="submit">Submit</button>
+          </div>
+
+
+      </form>
+
+  <div class="row settings settingsRow topMargin" ng-show={{role}}>
+
+      <div class="col-sm-8 col-sm-offset-2 topMargin">
+          <hr>
+          <h3 class="bottom topMargin">Customer Email Settings:</h3>
+          <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> An email address is required to respond to messages from your visitors.</h4>
+          <form ng-submit="firstTemplate()">
+              <p>This is the email address used to send confirmations to your customers upon messaging you from your site. Use an email you wish your customers to see: </br>
+                  <label class="top" >email:</label></br>
+                  <input type="text" ng-model="primaryEmail" required="required"></p>
+              <div>
+                  <h3>Order Confirmation Message:</h3>
+                  <p>This is the email a customer will recieve when they order a shipping kit.</p>
+                  <p>Subject: </br> <input type="text" ng-model="firstSubject" required="required"></p>
+                  <p>Email Body:</p>
+                  <textarea cols="45" rows="5" ng-model="firstEmail" required="required"></textarea></br>
+                  <button class="btn btn-success submitBtn" type="submit">Save this Message</button>
+              </div>
+
+          </form>
+
+
+
+  </div>
+
+</div>

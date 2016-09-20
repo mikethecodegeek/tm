@@ -1,0 +1,109 @@
+<div class="container profileState">
+	<button id="addnew" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal6">
+  Add New Item
+</button>
+	<table class="table">
+  <tr>
+    <th>Date</th>
+    <th>By</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Priority</th>
+    <th>Status</th>
+  </tr>
+  <tr ng-repeat = "item in items">
+    <td>{{item.date | date}}</td>
+    <td>{{item.assignor}}</td>
+    <td>{{item.type}}</td>
+    <td>{{item.desc}}</td>
+    <td>{{item.priority}}</td>
+    <td>{{item.status}}</td>
+    <td><button ng-click="edit(item)">Edit</button></td>
+    <td><button ng-click="delete(item)" ng-show="item.assignor == item.assignee">Delete</button></td>
+  </tr>
+</table>
+
+<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Item</h4>
+      </div>
+      <div class="modal-body">
+        <form ng-submit="addToList(item)">
+
+          <div class="form-section">
+            Request Type
+            <select name="reqtype" form="req" ng-model="item.type">
+              <option value="Bug">Bug</option>
+              <option value="Feature">Feature</option>
+              <option value="Enhancement">Enhancement</option>
+              <option value="To-Do">To-Do</option>
+            </select> <br>
+          </div>
+          <div class="form-section">
+            Description
+            <input type="text" name="desc" ng-model="item.desc"><br>
+          </div>
+          <div class="form-section">
+            Priority
+            <select name="reqpriority" form="req" ng-model="item.priority">
+              <option value="Low">Low</option>
+              <option value="Normal">Normal</option>
+              <option value="Urgent">Urgent</option>
+            </select>
+          </div>
+            <!-- <button type="submit">Submit</button> -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click=addToList(item)>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Item</h4>
+      </div>
+      <div class="modal-body">
+        <form ng-submit="updateList(selected)">
+            Request Type
+              <select name="reqtype" form="req" ng-model="selected.type">
+                <option value="Bug">Bug</option>
+                <option value="Feature">Feature</option>
+                <option value="Enhancement">Enhancement</option>
+                <option value="To-Do">To-Do</option>
+            </select> <br>
+            Description
+            <input type="text" name="desc" ng-model="selected.desc"><br>
+            Priority
+            <select name="reqpriority" form="req" ng-model="selected.priority">
+              <option value="Low">Low</option>
+              <option value="Normal">Normal</option>
+              <option value="Urgent">Urgent</option>
+          </select>
+          Status
+          <select name="reqstatus" form="req" ng-model="selected.status">
+            <option value="New">New</option>
+            <option value="Open">Open</option>
+            <option value="Complete">Complete</option>
+        </select>
+            <!-- <button type="submit">Submit</button> -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click=updateList(selected)>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
