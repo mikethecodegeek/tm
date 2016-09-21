@@ -17,23 +17,36 @@
 <div class="col-sm-9 col-sm-offset-1">
 <table class="table">
     <tr>
-      <th>Date</th>
-      <th>User</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Priority</th>
-      <th>Due Date</th>
-      <th>Status</th>
+      <th><a ng-click="sortType = 'date' ; sortReverse = !sortReverse">Date<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+          </a> </th>
+      <th><a ng-click="sortType = 'assignee' ; sortReverse = !sortReverse">User <span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+          </a></th>
+      <th><a ng-click="sortType = 'type'; sortReverse = !sortReverse">Type<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+          </a></th>
+      <th><a ng-click="sortType = 'desc'; sortReverse = !sortReverse">Description<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+          </a></th>
+      <th><a ng-click="sortType = 'priority'; sortReverse = !sortReverse">Priority<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+          </a></th>
+      <th><a ng-click="sortType = 'status'; sortReverse = !sortReverse">Status<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+          </a></th>
+      <th><a ng-click="sortType = 'duedate'; sortReverse = !sortReverse">Due Date<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+          </a></th>
+      <th><a ng-click="sortType = 'startdate'; sortReverse = !sortReverse">Start Date<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+          </a></th>
+      <th><a ng-click="sortType = 'completedate'; sortReverse = !sortReverse">Completed<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+          </a></th>
     </tr>
 
-    <tr ng-repeat="item in items| filter: sortByName">
-        <td>{{item.date | date}}</td>
+    <tr ng-repeat="item in items| filter: sortByName | orderBy:sortType:sortReverse">
+        <td>{{item.date | date:'MM/dd/yyyy'}}</td>
         <td>{{item.assignee}}</td>
         <td>{{item.type}}</td>
         <td>{{item.desc}}</td>
         <td>{{item.priority}}</td>
-        <td>{{item.duedate | date}}</td>
         <td>{{item.status}}</td>
+        <td>{{item.duedate | date:'MM/dd/yyyy'}}</td>
+        <td>{{item.startdate | date:'MM/dd/yyyy'}}</td>
+    		<td>{{item.completedate | date:'MM/dd/yyyy'}}</td>
         <td><button class="btn btn-warning" ng-click="edit(item)">Edit</button></td>
         <td><button class="btn btn-danger" ng-click="delete(item)">Delete</td>
     </tr>

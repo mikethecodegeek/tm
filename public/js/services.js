@@ -138,6 +138,12 @@ app.service('listingService',function($http) {
     this.newItem = function(item) {
         return $http.post('./api/listings/newlisting',{item:item});
     };
+    this.startTask= function(item) {
+        return $http.post('./api/listings/starttask',{item:item});
+    };
+    this.completeTask = function(item) {
+        return $http.post('./api/listings/completetask',{item:item});
+    };
     this.deleteItem =  function(item) {
         return $http.post('./api/listings/deletelisting',{item:item});
     };

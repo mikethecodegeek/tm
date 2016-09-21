@@ -587,6 +587,32 @@ app.controller('profileCtlr', function(listingService, userService, $scope, $sta
     $('#adminModal').modal('show')
   }
 
+  $scope.starttask =function(task) {
+    console.log(task)
+    task.startdate = moment()._d;
+    listingService.startTask(task)
+    .then( function(items) {
+      listingService.getUserItems(thisuser.data.name)
+      .then( function(items){
+          $scope.items= items.data;
+          //$('#myModal6').modal('hide');
+      })
+    })
+  }
+
+  $scope.completetask = function(task) {
+    task.completedate = moment()._d;
+    console.log(task)
+    listingService.completeTask(task)
+    .then( function(items) {
+      listingService.getUserItems(thisuser.data.name)
+      .then( function(items){
+          $scope.items= items.data;
+          //$('#myModal6').modal('hide');
+      })
+    })
+  }
+
   $scope.delete = function (item) {
     listingService.deleteItem(item)
     .then( function(items) {

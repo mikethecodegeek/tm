@@ -11,6 +11,7 @@
     <th>Priority</th>
     <th>Status</th>
 		<th>Due Date</th>
+		<th>Started</th>
 		<th>Completed</th>
   </tr>
   <tr ng-repeat = "item in items">
@@ -21,8 +22,11 @@
     <td>{{item.priority}}</td>
     <td>{{item.status}}</td>
 		<td>{{item.duedate}}</td>
-		<td>{{item.completed}}</td>
-    <td><button ng-click="edit(item)">Edit</button></td>
+		<td>{{item.startdate | date}}
+			<button ng-show="item.status == 'New'" ng-click="starttask(item)">Start Task</button></td>
+		<td>{{item.completedate | date}}
+			<button ng-show="item.status == 'current'" ng-click="completetask(item)">Mark Complete</button>
+		</td>
     <td><button ng-click="delete(item)" ng-show="item.assignor == item.assignee">Delete</button></td>
   </tr>
 </table>

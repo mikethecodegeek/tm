@@ -21,7 +21,29 @@ router.post('/name', (req,res)=> {
     Listing.find({assignee:req.body.name})
         .exec((err, data) => err ? res.send(err) : res.send(data));
 });
+router.post('/starttask', (req,res)=> {
+    console.log(req.body)
+    Listing.findByIdAndUpdate(req.body.item._id,{$set: {status:'current', startdate:req.body.item.startdate}}, {new:true}, (err,data)=> {
+        if (err){
+            console.log(err);
+        }
+        else {
+            res.send(data);
+        }
+    });
+});
 
+router.post('/completetask', (req,res)=> {
+    console.log(req.body)
+    Listing.findByIdAndUpdate(req.body.item._id,{$set: {status:'complete', completed:req.body.item.completedate, completedate:req.body.item.completedate}}, {new:true}, (err,data)=> {
+        if (err){
+            console.log(err);
+        }
+        else {
+            res.send(data);
+        }
+    });
+});
 router.post('/newlisting', (req,res)=> {
     console.log(req.body)
     Listing.create(req.body.item,(err, listing)=> err ? res.send(err) : res.send(listing));
