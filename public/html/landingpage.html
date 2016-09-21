@@ -77,19 +77,19 @@
 </div>
 </div>
 <div class="container">
-  <div class="card card-block">
-    <h4 class="card-title">Mail</h4>
-    <p class="card-text">View and send messages</p>
-    <a ui-sref="inbox" class="card-link">Card link</a>
-  </div>
-  <div class="card card-block" ng-show="dash">
-    <h4 class="card-title">Dashboard</h4>
-    <p class="card-text">View and manage users, assign tasks</p>
-    <a ui-sref="dashboard" class="card-link">Card link</a>
-  </div>
-  <div class="card card-block">
-    <h4 class="card-title">Profile</h4>
-    <p class="card-text">See what is on my list</p>
-    <a ui-sref="profile" class="card-link">Card link</a>
+  <div class="row col-sm-12">
+
+    <div class="card card-block col-sm-3" ui-sref="inbox">
+      <h2 class="card-title">Mail</h4>
+      <h4 class="card-text">View and send messages</h4>
+    </div>
+    <div class="card card-block col-sm-3" ng-show="dash" ui-sref="dashboard">
+      <h2 class="card-title">Dashboard</h4>
+      <h4 class="card-text">View and manage users, assign tasks</h4>
+    </div>
+    <div class="card card-block col-sm-3" ui-sref="profile">
+      <h2 class="card-title">Profile</h4>
+      <h4 class="card-text">See what is on my list</h4>
+    </div>
   </div>
 </div>
