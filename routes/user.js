@@ -10,6 +10,11 @@ router.get('/', (req,res)=> {
         .exec((err, data) => err ? res.send(err) : res.send(data));
 });
 
+router.get('/contacts', (req,res)=> {
+     User.find({admin:false})
+        .exec((err, data) => err ? res.send(err) : res.send(data));
+});
+
 router.post('/register', (req,res) => {
     User.register(req.body, (err, thisuser)=> err ? res.status(400).send(err) : res.status(200).send(thisuser));
 });

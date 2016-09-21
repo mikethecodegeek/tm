@@ -19,6 +19,20 @@ router.post('/userbox', (req,res)=> {
         .exec((err, data) => err ? res.send(err) : res.send(data));
 });
 
+router.post('/read', (req,res)=> {
+  console.log(req.body)
+    // Messages.find({to: req.body.user})
+    //     .exec((err, data) => err ? res.send(err) : res.send(data));
+    Messages.findByIdAndUpdate(req.body.message,{$set: {status:"read"}}, {new:true}, (err,data)=> {
+        if (err){
+            console.log(err);
+        }
+        else {
+            res.send(data);
+        }
+    });
+});
+
 
 router.post('/newmessage', (req,res)=> {
   console.log(req.body)

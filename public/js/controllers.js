@@ -190,12 +190,17 @@ app.controller('dashboardCtrl', function($scope, $state, userLoggedIn) {
         console.log('Not Logged In');
         $state.go('home');
     }
+    var contacts = userService.getContacts()
+    .then(function (contacts) {
+      console.log('contacts', contacts)
+      $scope.contacts = contacts.data;
+    })
 
 
 });
 
 app.controller('inboxCtrl', function(userService, messageService, $scope, $state) {
-  var authenticated, thisuser;
+  var authenticated, thisuser, contacts;
   var currentUser = userService.getProfile()
       .then(function(user) {
         console.log(user)
@@ -219,9 +224,14 @@ app.controller('inboxCtrl', function(userService, messageService, $scope, $state
         }
 
       });
-
+    var contacts = userService.getContacts()
+    .then(function (contacts) {
+      console.log('contacts', contacts)
+      $scope.contacts = contacts.data;
+    })
     $scope.sendToAdmin = function(message) {
       message.to = "admin";
+      message.date = moment()._d;
       message.from = thisuser;
       console.log(message)
       messageService.sendToAdmin(message)
@@ -232,6 +242,7 @@ app.controller('inboxCtrl', function(userService, messageService, $scope, $state
     $scope.sendToUser= function(message) {
       //message.to = "admin";
       message.from = "Eddie";
+      message.date = moment()._d;
       console.log(message)
       messageService.sendToAdmin(message)
       .then(function() {
@@ -263,10 +274,31 @@ app.controller('inboxCtrl', function(userService, messageService, $scope, $state
             });
     }
 
+    $scope.readMessage = function(message) {
+        console.log(message);
+        messageService.readById(message)
+            .then( function(stuff) {
+                console.log(stuff)
+                if (authenticated) {
+                  messageService.getAdmin()
+                  .then(function(messages){
+                    console.log(messages)
+                    $scope.messages = messages.data
+                  })
+                }
+                else {
+                  messageService.getUser(thisuser)
+                  .then(function(messages){
+                    $scope.messages = messages.data
+                  })
+                }
+            });
+    }
+
 
 });
 
-app.controller('dashboardCtrl', function($scope, $state, listingService) {
+app.controller('dashboardCtrl', function($scope, $state, userService, listingService) {
 
   listingService.getTasks()
   .then( function(items){
@@ -303,6 +335,12 @@ app.controller('dashboardCtrl', function($scope, $state, listingService) {
       })
     })
   }
+
+  var contacts = userService.getContacts()
+  .then(function (contacts) {
+    console.log('contacts', contacts)
+    $scope.contacts = contacts.data;
+  })
 
   $scope.addToList = function(item) {
       console.log(item)

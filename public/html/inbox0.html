@@ -1,6 +1,7 @@
 <div class="container">
   <div>
     <button class='btn'>New Mail</button>
+    <button class='btn'>Read Mail</button>
     <button class='btn'>Sent Mail</button>
     <button ng-show="authenticated == false" id="newmessage" type="button" class="btn btn-success" data-toggle="modal" data-target="#messageModal">
     Send Message To Admin
@@ -16,15 +17,12 @@
           <th>From</th>
           <th>Subject</th>
           <th>Message</th>
-          <th>Status</th>
       </tr>
      <tr ng-repeat="message in messages">
          <td>{{message.date | date}}</td>
          <td>{{message.from}}</td>
          <td>{{message.subject}}</td>
          <td>{{message.message}}</td>
-         <td>{{message.status}}</td>
-         <td><button attr={{message._id}} ng-click="readMessage(message._id)">Mark as read</button></td>
          <td><button attr={{message._id}} ng-click="deleteMessage(message._id)">Delete</button></td>
      </tr>
 

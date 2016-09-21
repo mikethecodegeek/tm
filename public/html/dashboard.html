@@ -50,7 +50,10 @@
             </div>
             <form ng-submit="updateList(selected)">
                 Assignee:
-                <input type="text" name="name" ng-model="selected.name"><br>
+                <!-- <input type="text" name="name" ng-model="selected.name"><br> -->
+                <select name="repeatSelect" id="repeatSelect" ng-model="selected.name">
+                  <option ng-repeat="contact in contacts" value="{{contact.name}}">{{contact.name}}</option>
+                </select>
                 Request Type
                   <select name="reqtype" form="req" ng-model="selected.type">
                     <option value="Bug">Bug</option>

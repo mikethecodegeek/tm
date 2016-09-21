@@ -4,7 +4,9 @@ var messageSchema = new mongoose.Schema({
     message: {type: String},
     to: {type: String},
     from: {type: String},
-    subject: {type: String}
+    subject: {type: String},
+    date: {type: String},
+    status:{type: String, default: "New"}
 });
 
 

@@ -27,6 +27,10 @@ app.service('userService', function($q,$http) {
         return $http.get(`./api/users/id/${id}`);
     };
 
+    this.getContacts = function() {
+      return $http.get('./api/users/contacts');
+    }
+
     this.getByUsername = function(username) {
         return $http.get(`./api/users/${username}`);
     }
@@ -111,6 +115,9 @@ app.service('messageService',function($http) {
     };
     this.deleteById = function (id) {
         return $http.delete(`./api/inbox/${id}`);
+    };
+    this.readById = function (id) {
+        return $http.post(`./api/inbox/read`, {message: id});
     };
     this.editById = function (id, newPost) {
         return $http.put(`./api/inbox/${id}`, {item: newPost});
