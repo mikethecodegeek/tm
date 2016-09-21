@@ -8,7 +8,9 @@ var listingSchema = new mongoose.Schema({
     type:{type: String},
     desc:{type: String},
     priority:{type: String},
-    status:{type: String, default: 'New'}
+    status:{type: String, default: 'New'},
+    duedate:{type: String},
+    completed:{type: String, default: false}
 });
 
 

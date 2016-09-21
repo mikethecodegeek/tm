@@ -32,8 +32,9 @@
         <td>{{item.type}}</td>
         <td>{{item.desc}}</td>
         <td>{{item.priority}}</td>
-        <td>{{pending}}</td>
+        <td>{{item.duedate | date}}</td>
         <td>{{item.status}}</td>
+        <td><button class="btn btn-warning" ng-click="edit(item)">Edit</button></td>
         <td><button class="btn btn-danger" ng-click="delete(item)">Delete</td>
     </tr>
 
@@ -48,30 +49,108 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Assign a Task</h4>
             </div>
-            <form ng-submit="updateList(selected)">
-                Assignee:
+            <form ng-submit="addToList(selected1)">
+              <div class="form-section">
+
                 <!-- <input type="text" name="name" ng-model="selected.name"><br> -->
-                <select name="repeatSelect" id="repeatSelect" ng-model="selected.name">
+                <label class="control-label" for="repeatSelectNew">Assignee</label>
+                <select name="repeatSelect" id="repeatSelectNew" ng-model="selected1.name">
                   <option ng-repeat="contact in contacts" value="{{contact.name}}">{{contact.name}}</option>
                 </select>
-                Request Type
-                  <select name="reqtype" form="req" ng-model="selected.type">
-                    <option value="Bug">Bug</option>
-                    <option value="Feature">Feature</option>
-                    <option value="Enhancement">Enhancement</option>
-                    <option value="To-Do">To-Do</option>
+              </div>
+              <div class="form-section">
+                <label class="control-label" for="reqtypeNew">Request Type</label>
+                <select name="reqtypeNew" form="req" ng-model="selected1.type">
+                  <option value="Bug">Bug</option>
+                  <option value="Feature">Feature</option>
+                  <option value="Enhancement">Enhancement</option>
+                  <option value="To-Do">To-Do</option>
                 </select> <br>
-                Description
-                <input type="text" name="desc" ng-model="selected.desc"><br>
-                Priority
-                <select name="reqpriority" form="req" ng-model="selected.priority">
+              </div>
+              <div class="form-section">
+                <label class="control-label" for="reqpriorityNew">Priority</label>
+                <select name="reqpriorityNew" form="req" ng-model="selected1.priority">
                   <option value="Low">Low</option>
                   <option value="Normal">Normal</option>
                   <option value="Urgent">Urgent</option>
-              </select>
+                </select>
+              </div>
+              <div class="form-section">
+                <label class="control-label" for="descNew">Description</label>
+                <input type="text-area" name="descNew" ng-model="selected1.desc" style="width:95%"><br>
+              </div>
+              <div class="form-section">
+                <label class="control-label" for="date">Due Date</label>
+                <input class="form-control" id="pickedNew" name="date" ng-model="selected1.duedate" placeholder="MM/DD/YYY" type="text"/>
+              </div>
+                <div class="form-section">
+                  <button type="submit">Submit</button>
+                </div>
 
-                <button type="submit">Submit</button>
             </form>
     </div>
 </div>
 </div>
+
+<div class="modal fade" id="adminUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Update Task</h4>
+      </div>
+      <div class="modal-body">
+        <form ng-submit="updateList(selected)">
+          <div class="form-section">
+
+            Assignee
+            <select name="repeatSelect" id="repeatSelect" ng-model="selected.name" style="width:100px;">
+              <option ng-repeat="contact in contacts" value="{{contact.name}}">{{contact.name}}</option>
+            </select>
+          </div>
+          <div class="form-section">
+            Request Type
+            <select name="reqtype" form="req" ng-model="selected.type">
+              <option value="Bug">Bug</option>
+              <option value="Feature">Feature</option>
+              <option value="Enhancement">Enhancement</option>
+              <option value="To-Do">To-Do</option>
+            </select> <br>
+
+          </div>
+          <div class="form-section">
+            Description
+            <input type="text" name="desc" ng-model="selected.desc"><br>
+
+          </div>
+          <div class="form-section">
+            Priority
+            <select name="reqpriority" form="req" ng-model="selected.priority">
+              <option value="Low">Low</option>
+              <option value="Normal">Normal</option>
+              <option value="Urgent">Urgent</option>
+            </select>
+
+          </div>
+          <div class="form-section">
+            Status
+            <select name="reqstatus" form="req" ng-model="selected.status">
+              <option value="New">New</option>
+              <option value="Open">Open</option>
+              <option value="Complete">Complete</option>
+            </select>
+
+          </div>
+        <div class="form-section">
+          <label class="control-label" for="date">Due Date</label>
+          <input class="form-control" id="picked2" name="date" ng-model="selected.duedate" placeholder="MM/DD/YYY" type="text"/>
+        </div>
+            <!-- <button type="submit">Submit</button> -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click=updateList(selected)>Save changes</button>
+      </div>
+    </div>
+  </div>

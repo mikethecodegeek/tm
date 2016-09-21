@@ -10,6 +10,8 @@
     <th>Description</th>
     <th>Priority</th>
     <th>Status</th>
+		<th>Due Date</th>
+		<th>Completed</th>
   </tr>
   <tr ng-repeat = "item in items">
     <td>{{item.date | date}}</td>
@@ -18,6 +20,8 @@
     <td>{{item.desc}}</td>
     <td>{{item.priority}}</td>
     <td>{{item.status}}</td>
+		<td>{{item.duedate}}</td>
+		<td>{{item.completed}}</td>
     <td><button ng-click="edit(item)">Edit</button></td>
     <td><button ng-click="delete(item)" ng-show="item.assignor == item.assignee">Delete</button></td>
   </tr>

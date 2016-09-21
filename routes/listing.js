@@ -28,7 +28,7 @@ router.post('/newlisting', (req,res)=> {
 });
 
 router.post('/updatelisting', (req,res)=> {
-    console.log(req.body.item._id)
+    console.log(req.body)
     Listing.findByIdAndUpdate(req.body.item._id,{$set: req.body.item}, {new:true}, (err,data)=> {
         if (err){
             console.log(err);

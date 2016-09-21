@@ -64,24 +64,24 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add New Item</h4>
+        <h4 class="modal-title" id="myModalLabel">Send a Message</h4>
       </div>
       <div class="modal-body">
         <form ng-submit="addToList(item)">
           <div class="form-section">
           To: <br>
           <!-- <input type="text" ng-model="message.to"> -->
-          <select name="repeatSelect" id="repeatSelect" ng-model="message.to">
+          <select name="repeatSelect" id="repeatSelect" ng-model="message.to" style="width:100px;">
             <option ng-repeat="contact in contacts" value="{{contact.name}}">{{contact.name}}</option>
           </select>
           </div>
           <div class="form-section">
           Subject <br>
-          <input type="text" ng-model="message.subject">
+          <input type="text" ng-model="message.subject" style="width:60%;">
           </div>
           <div class="form-section">
           Message <br>
-          <input type="text" ng-model="message.message">
+          <input type="text-area" ng-model="message.message" style="width:90%;">
           </div>
         </form>
       </div>

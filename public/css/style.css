@@ -1,16 +1,16 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:400,700,900';
 
-* {
+{
       font-family: 'Roboto', sans-serif;
 }
-body {
+/*body {
     overflow-x: hidden;
-}
+}*/
 
 
-ul.nav a:hover { text-decoration: underline !important; }
+/*ul.nav a:hover { text-decoration: underline !important; }*/
 
-.navbar-collapse {
+/*.navbar-collapse {
   background-color: #173e7c;
 
 }
@@ -19,56 +19,16 @@ ul.nav a:hover { text-decoration: underline !important; }
     background-color: #173e7c;
 }
 
-.sellImg {
-    max-height: 175px;
-    margin-top: 2%;
-}
-
-.sellImg:hover {
-/*    min-width: 200px;
-    max-width: 200px;*/
-transform: scale(1.2, 1.2);
-
-}
-/*.btn {
-    margin: 5px;
-}*/
 
 .dropdown {
     position: relative;
     display: inline;
-}
-
-#dropdownMenu1 {
-    width: 95%;
-}
-
-#dropdownMenu2 {
-    width: 95%;
-}
-
-#dropdownMenu3 {
-    width: 95%;
-}
-
-.getQuote {
-    text-align: center;
-}
-
-.color {
-    float: left;
-    padding-top: 12px;
-    font-size: 16px;
-}
-
-.locked {
-    margin-top: 2%;
-    font-weight: bold;
-    font-size: 18px;
-}
+}*/
 
 
-#getQuote {
+
+
+/*#getQuote {
     display:block;
     margin: 0 auto;
     margin-top: 5%;
@@ -224,9 +184,9 @@ blockquote .card-blockquote {
 }
 .submitBtn {
     margin-bottom: 5%;
-}
+}*/
 
-#sendMessage {
+/*#sendMessage {
     margin-bottom: 5%;
 
 }
@@ -276,9 +236,9 @@ blockquote .card-blockquote {
     background-color: #F8F8F8;
     color: #286090;
 
-}
+}*/
 
-.devicesContainer {
+/*.devicesContainer {
     margin-top: 5%;
     background-color: #F8F8F8;
     color: #286090;
@@ -308,9 +268,9 @@ blockquote .card-blockquote {
 
 .selectionImage {
     min-height: 200px;
-    max-height: 200px;
+    max-height: 200px;*/
 /*    min-width: 200px;*/
-    max-width: 200px;
+    /*max-width: 200px;
 }
 .left {
     margin-left: 2%;
@@ -326,9 +286,9 @@ blockquote .card-blockquote {
 
 .topMargin {
     margin-top: 5%;
-}
+}*/
 
-
+/*
 .adminMenu {
     color: white;
     font-size: 18px;
@@ -479,8 +439,8 @@ div.actionCallRow .row {
     margin-top: -1%;
     margin-bottom: 2%;
 }
-
-#testimonial2 {
+*/
+/*#testimonial2 {
     position: relative;
     width: 102%;
     left: 0;
@@ -546,7 +506,7 @@ div.actionText p {
 
 .actionCallRow {
 /*    position: absolute;*/
-    width: 102%;
+    /*width: 102%;
     left: 0;
     color: white;
     background-color: #173e7c;
@@ -554,9 +514,9 @@ div.actionText p {
     margin-bottom: 2%;
     margin-top: 0;
     box-shadow: 2px 2px 2px #1b2223;
-}
+}*/
 
-.adminNav {
+/*.adminNav {
     background-color: #173e7c;
 }
 
@@ -594,9 +554,9 @@ div.actionText p {
 }
 
 .middle {
-    height: 55px;
+    height: 55px;*/
       /* equals max image height */
-    max-width: 100px;
+    /*max-width: 100px;
     white-space: nowrap;
     text-align: center; margin: 1em 0;
     margin-top: 0%;
@@ -634,12 +594,12 @@ div.actionText p {
 div.actionText h3 {
     font-size: 28px;
 }
-
+*/
 
 
 /*Kim's Styles Start*/
 
-.navbar-default {
+/*.navbar-default {
     background: rgba(0,0,0,0.0);
     border-color: rgba(0,0,0,0.0);
 }
@@ -652,11 +612,11 @@ div.actionText h3 {
   background-color:#fff;
   padding: 5% 5% 10% 5%;
 
-}
+}*/
 
-.device-card {
+/*.device-card {*/
 /*    position: relative;*/
-    height: 250px;
+    /*height: 250px;
     border: 1px solid #D3D3D3;
     text-align:center;
     display: inline-block;
@@ -671,9 +631,9 @@ div.actionText h3 {
 h2 {
   text-align: center;
   font-weight: bold;
-}
+}*/
 
-.navbar-default .navbar-brand {
+/*.navbar-default .navbar-brand {
     color: #fff;
 }
 
@@ -703,9 +663,9 @@ input {
     background-color: #fff;
     border: 1px solid #e3e3e3;
 
-}
+}*/
 
-.profileState {
+/*.profileState {
   min-height: 700px;
 }
 
@@ -730,7 +690,7 @@ input {
     100% {
            background-color: rgba(133,182,223,1)
     }
-}
+}*/
 
 .progAnimate {
   padding: 7px 7px 7px 7px;
@@ -753,7 +713,7 @@ animation:blink normal 1.5s infinite ease-in-out;
 /* Opera */
 }
 
-.messageRow {
+/*.messageRow {
   -webkit-transition:all linear 0.5s;
   transition:all linear 0.5s;
 }
@@ -767,11 +727,11 @@ animation:blink normal 1.5s infinite ease-in-out;
 }
 .allTrans.ng-hide {
   opacity:0;
-}
+}*/
 
 /*LANDING PAGE REDO START*/
 
-.fa-square {
+/*.fa-square {
   font-size: 100px;
   color: #173e7c;
 }
@@ -818,7 +778,7 @@ aside {
   color: #ffffff;
   font-size: 100px;
   display: block;
-}
+}*/
 
 /*footer {
   background-color: #e5e5e5;
@@ -826,9 +786,9 @@ aside {
   text-align: center;
 }*/
 
-.numberCircle {
+/*.numberCircle {
     border-radius: 50%;
-    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+    behavior: url(PIE.htc);
 
     width: 36px;
     height: 36px;
@@ -857,12 +817,12 @@ aside {
   font-weight: 900;
   font-size: 400%;
   color:#fff;
-}
+}*/
 
 /*GRID START */
 /* CSS used here will be applied after bootstrap.css */
 
-.formulariodecontacto legend {
+/*.formulariodecontacto legend {
     text-align:center;}
 
 .linksoc{
@@ -901,14 +861,14 @@ ul.grid-ul {
         background-color: #00AFF0;}
 
 .linksoc .linked{
-        background-color: #1D87BE;}
+        background-color: #1D87BE;}*/
 
 /*@media screen and (min-width: 900px) {
   .grillasocial.row {
         display:inline;}
     }*/
 
-.grid-font {
+/*.grid-font {
   padding-top: 20%;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
@@ -935,10 +895,10 @@ footer {
 .icon-margin {
   margin-left: 100%:
   margin-right: 100%:
-  }
+  }*/
 
 /*GRID END*/
-.navbar-left {
+/*.navbar-left {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 300%;
@@ -953,20 +913,20 @@ footer {
 
 .navbar-left:hover {
   color: #fff;
-}
+}*/
 /*LANDING PAGE REDO END*/
 
 /*INFO PAGE REDO START*/
-hr.style-one {
+/*hr.style-one {
     border: 0;
     height: 1px;
     background: #173e7c;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
-}
+}*/
 
 /*INFO PAGE REDO END*/
 
-.details-container {
+/*.details-container {
   margin-top:5%;
   margin-bottom:5%;
   text-align:center;
@@ -977,7 +937,7 @@ hr.style-one {
 
 #no-bullets li {
     list-style-type: none;
-}
+}*/
 
 .card-block {
 
@@ -996,6 +956,7 @@ hr.style-one {
 
 .card-title {
   margin-top: 25%;
+  text-align: center;
 }
 
 .card-text {
@@ -1004,3 +965,9 @@ hr.style-one {
 .card-block:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+.form-section {
+  padding: 10px;
+}
+
+.datepicker{z-index:1151 !important;}

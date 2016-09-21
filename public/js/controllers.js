@@ -29,6 +29,7 @@ app.controller('mainCtrl', function ($scope, $rootScope,  $state,  $window, $loc
             .then( function(user) {
                   $rootScope.loggedin = false;
                   $scope.admin = false;
+                  $scope.dash = false;
                 $state.go('landing');
             });
     };
@@ -54,8 +55,16 @@ app.controller('mainCtrl', function ($scope, $rootScope,  $state,  $window, $loc
                 $('#myModal').modal('hide');
                 userService.getProfile()
                     .then( function(user){
-                      if (user.data.admin) {
-                          $scope.admin = true;
+
+                      // console.log('Stuff')
+                      // if (user.data.admin) {
+                      //     $scope.admin = true;
+                      // }
+                      if (user.data.admin === true) {
+                        $scope.dash = true;
+                      }
+                      else {
+                        $scope.dash = false;
                       }
 
                     });
@@ -300,6 +309,18 @@ app.controller('inboxCtrl', function(userService, messageService, $scope, $state
 
 app.controller('dashboardCtrl', function($scope, $state, userService, listingService) {
 
+  $(document).ready(function(){
+    var date_input=$('input[name="date"]'); //our date input has the name "date"
+    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+    var options={
+      format: 'mm/dd/yyyy',
+      container: container,
+      todayHighlight: true,
+      autoclose: true,
+    };
+    date_input.datepicker(options);
+  })
+
   listingService.getTasks()
   .then( function(items){
     console.log(items)
@@ -323,6 +344,8 @@ app.controller('dashboardCtrl', function($scope, $state, userService, listingSer
   }
 
   $scope.updateList = function (item) {
+    console.log('item', item)
+    item.duedate = $('#picked').val()
     item.assignor ="Eddie";
     item.assignee = item.name;
     item.date = moment()._d;
@@ -344,6 +367,10 @@ app.controller('dashboardCtrl', function($scope, $state, userService, listingSer
 
   $scope.addToList = function(item) {
       console.log(item)
+      //item.date = moment()._d;
+      item.duedate = $('#pickedNew').val()
+      item.assignor ="Eddie";
+      item.assignee = item.name;
       item.date = moment()._d;
       listingService.newItem(item)
       .then( function(items) {
@@ -352,10 +379,32 @@ app.controller('dashboardCtrl', function($scope, $state, userService, listingSer
         .then( function(items){
             console.log(items)
             $scope.items= items.data;
-            $('#myModal6').modal('hide');
+            $('#dashModal').modal('hide');
+            $scope.selected1 = {};
         })
       })
     }
+
+    $scope.edit = function(item) {
+    $scope.selected = item;
+    $('#adminUpdate').modal('show')
+    }
+
+    $scope.updateList = function (item) {
+      item.duedate = $('#picked2').val()
+      item.assignor ="Eddie";
+      item.assignee = item.name;
+      item.date = moment()._d;
+      listingService.updateItem(item)
+      .then( function(item) {
+        listingService.getTasks()
+        .then(function(items){
+            $scope.items= items.data;
+            $('#adminUpdate').modal('hide');
+        })
+      })
+    }
+
 });
 
 
